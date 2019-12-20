@@ -74,7 +74,7 @@ int main(void) {
 
 void process(float *inBuffer, float *outBuffer, sf_count_t bufferSize){
   double amp;
-  for(sf_count_t n = 0; n < bufferSize; n++){
+  for(sf_count_t n = 0; n < bufferSize; n+=kNumChannels){
     amp = (1.0 + kDepth * sin(2.0 * M_PI * kRate * n / gSampleRate))*(1.0 + kModDepth * sin(2.0 * M_PI * kModRate * n / gSampleRate));
     outBuffer[n*kNumChannels] = amp * inBuffer[n] * kGain;
   
